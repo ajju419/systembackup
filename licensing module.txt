@@ -1,0 +1,25 @@
+software licencing:
+-------------------
+All software applications require a software license in order to run.
+a software licence is a legal document that governs how the software can be 
+used and distributed. when you download or install software, you are
+asked to agree to the terms of a license
+
+can you look at the undelying source code?
+
+proprietary license:
+--------------------
+exclusinve rights in the software are retained with the owner/develop/publisher
+they reserve all the freedoms and rights to use and distribute these
+propierty software
+
+anyone outside the community are not allowed to use, modify, copy or
+distribute modified versions of the software.
+
+Free and open source licences:
+-----------------------------
+this license of a software gives users the right to modify and
+distribute the software
+oper-source software is often developed in a collaborative manner,
+where many users contribute to ongoing improvements
+
