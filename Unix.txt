@@ -1,0 +1,336 @@
+ 
+
+1.Write a shell script to find whether an input integer is even or odd? 
+
+Even or Odd:
+echo " Enter a number "
+read n
+if [ $n % 2 == 0 ]
+then
+	echo " it is even number "
+else
+	echo " it is odd number "
+fi
+
+2.write a shell script to find out the greatest among three inputs?
+
+echo "---FIND THE GREATETST AMONG THREE NUMBERS---"
+echo "enter 1st number: "
+read first_num
+echo "enter 2nd number: "
+read second_num
+echo "enter 3rd number: "
+read third_num
+if test $first_num -gt $second_num && $first_num -gt $third_num
+then
+	echo $first_num is the greatest number.
+elif test $second_num -gt $third_num
+then
+	echo $second_num is the greatest number.
+else
+	echo $third_num is the greatest number.
+fi
+
+3.Write a shell script to perform an arithmetic operation upon two inputs. The operation should also be input by the user? 
+
+#!/bin/bash
+a=10
+b=20
+val=`expr $a + $b`
+echo "a + b : $val"
+val=`expr $a - $b`
+echo "a - b : $val"
+val=`expr $a \* $b`
+echo "a * b : $val"
+val=`expr $b / $a`
+echo "b / a : $val"
+val=`expr $b % $a`
+echo "b % a : $val"
+if [ $a == $b ]
+then
+echo "a is equal to b"
+fi
+if [ $a != $b ]
+then
+echo "a is not equal to b"
+fi
+
+4.Write a shell script to find out the length of an input string? 
+
+#!/bin/bash str="Good
+ morning"length=${​​#str}​​
+echo "Length of '$str' is $length"
+
+
+5.Write a shell script to concatenate files?
+#!/bin/bash
+var1=soma
+var2=shekhar
+echo "sum=$var1 $var2"
+
+
+6.Program for command-line parameter & special variable?
+
+echo "script : $0"
+echo "positional parameter: $5"
+echo "positional parameter: $1"
+echo "positional parameter: $n"
+echo "single string: $*"
+echo "number of arguments: $#"
+echo "PID of the script: $$"
+echo "return code: $?"
+
+7.Write a shell script to find whether an input year is leap year or not? 
+
+#!/bin/bash
+echo "enter the year :"
+read y
+#a=`expr $y % 4`
+#b=`expr $y % 100`
+#c=`expr $y % 400`
+if [ `expr $y % 4` -eq 0 ]
+then
+echo "$y is leap year"
+else
+echo "$y is not leap year"
+
+
+8.Write a shell script to concatenate two strings input by the user 
+
+echo "enter the string"
+read a
+echo "enter the string"
+read b
+SUM="${a} ${b}"
+echo "sum:$SUM"
+
+9.Write a shell script to concatenate files? 
+
+file1=$1
+file2=$2
+file3=$3
+out="output.$$"
+count=0
+if [ $# -ne 3 ]
+then
+echo "$(basename $0) file1 file2 file3"
+exit 1
+fi
+if [ ! -f $file1 ]
+then
+echo "$file1 not a file!"
+exit 2
+fi
+if [ ! -f $file2 ]
+then
+echo "$file2 not a file!"
+exit 3
+fi
+if [ ! -f $file3 ]
+then
+echo "$file3 not a file!"
+exit 4
+fi
+cat $file1 $file2 $file3 >> $out
+count=$(cat $out | wc -w)
+echo "$count words written to $out"
+
+10.Write a shell script to compare two strings input by the user for equality? 
+
+ #/bin/bash
+VAR1="Soma"
+VAR2="Shekhar"
+if [ "$VAR1" = "$VAR2" ]; then
+echo "Strings are equal."
+else
+echo "Strings are not equal."
+fi
+
+
+
+11.Write a shell scripting program to print multiplication table to the given number?
+
+echo "Enter a Number"
+read n
+i=1
+
+while [ $i -le 10 ]
+do
+          echo " $n x $i = $(( n * i ))"
+          i=$(( i + 1 ))
+done
+ 
+
+12.Write a shell scripting program to print factorial of the given number? 
+
+echo "Enter a number"
+read num
+fact=1
+while [ $num -gt 1 ]  
+do
+  fact=$((fact * num))
+  num=$((num - 1))
+done
+echo $factfactorial.sh
+
+13.Write a shell scripting program to print sum of natural numbers? 
+echo "Enter Size(N)"
+read N
+i=1
+sum=0
+echo "Enter Numbers"
+while [ $i -le $N ]
+do
+read num
+sum=$((sum + num))
+i=$((i + 1))
+done
+echo $sum
+
+
+14.Write a shell scripting program to check whether the given number is prime or not?
+ 
+ read -p "Enter a Range of number (a to b) : " a b
+  
+    echo "Prime numbers in the given range are :"
+    for ((i=$a; i<=$b; i++))
+    do
+      max=$(bc <<< "scale=0; sqrt($i)")
+      check=0
+
+      for ((j=2; j<=$max; j++))
+      do
+        if (( $i % $j == 0))
+        then
+            check=1
+            break
+        fi
+      done
+      if [ $check -eq 0 ]
+      then
+          echo -n "$i   "
+      fi
+    done
+                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                       
+15.Write a shell scripting program to print reverse of the given number? 
+
+echo enter n
+read n
+num=0
+while [ $n -gt 0 ]
+do
+num=$(expr $num \* 10)
+k=$(expr $n % 10)
+num=$(expr $num + $k)
+n=$(expr $n / 10)
+done
+echo number is $num
+
+16.Write a shell scripting program to display natural numbers in the given range in the reverse order? 
+
+n=123456
+sd=0
+rev=0
+while [ $n -gt 0 ]
+do
+sd=$(( $n % 10 ))
+rev=$(( $rev * 10 + $sd ))
+n=$(( $n / 10 ))
+done
+echo "Reverse number of entered digit is $rev 
+
+17.To find out the greatest and smallest element of an array? 
+
+#!/bin/bash
+arr=( -10 1 2 3 4 5 )
+min=0 max=0
+for i in ${arr[@]}; do
+(( $i > max || max == 0)) && max=$i
+(( $i < min || min == 0)) && min=$i
+done
+echo "min=$min
+max=$max"
+
+18.Write a program for Bubble sorting? 
+
+
+19.Write a shell script to find out what type of character you have entered such as capital letter, small letter, digit, 
+
+ special symbol and whether you entered more than one character? 
+
+20.Write a shell script that takes a command-line argument and reports whether it is a directory, a file, or 
+
+
+
+21.Write a shell script that asks for the capital of India and repeats the question until the user gets it right.  
+
+Enter capital in small letters? 
+
+
+22.How will you copy a file "abc.doc" present in current directory to a directory "abc2" present in the parent 
+
+
+
+23.Write a shell script to search a file in current directory? 
+
+
+24.Write a shell script to display a three digit number in English words? 
+
+
+25.To find number of files in Present Working Directory? 
+
+
+
+26.Moving shell files from PWD to specified directory? 
+
+## use pwd command ##
+_mydir="$(pwd)"
+
+## or ##
+_mydir="`pwd`"
+
+echo "My working dir: $_mydir"
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

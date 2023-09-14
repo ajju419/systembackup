@@ -1,0 +1,134 @@
+DBMS:
+step-1:
+mysql> CREATE DATABASE PROJECT;
+Query OK, 1 row affected (0.09 sec)
+
+step-2:
+mysql> USE PROJECT
+Database changed
+
+step-3:
+mysql> CREATE TABLE PROGRAMMER(
+    -> EMPNO INT(5),
+    -> PROJID INT(5),
+    -> LASTNAME VARCHAR(30),
+    -> FIRSTNAME VARCHAR(30),
+    -> HIREDATE VARCHAR(10),
+    -> LANGUAGE VARCHAR(10),
+    -> TASKNO INT(2),
+    -> PRIVILEGE INT(25));
+Query OK, 0 rows affected, 4 warnings (0.39 sec)
+
+//mysql> ALTER TABLE PROGRAMMER ADD PROJID VARCHAR(10);
+ERROR 1060 (42S21): Duplicate column name 'PROJID'
+
+step-4:
+
+mysql> INSERT INTO PROGRAMMER VALUES(201,'NPR','GUPTA','SAURAV',1/1/95,'VB',52,'SECRET')
+    -> ;
+ERROR 1366 (HY000): Incorrect integer value: 'SECRET' for column 'PRIVILEGE' at row 1
+mysql> ALTER TABLE PROGRAMMER MODIFY COLUMN PRIVILEGE VARCHAR(25);
+Query OK, 0 rows affected (1.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> INSERT INTO PROGRAMMER VALUES(201,'NPR','GUPTA','SAURAV',1/1/95,'VB',52,'SECRET')
+    -> ;
+Query OK, 1 row affected (0.07 sec)
+
+mysql> INSERT INTO PROGRAMMER VALUES(390,'KCW','GHOSH','PINKY',1/5/93,'JAVA',11,'TOPSECRET');
+Query OK, 1 row affected (0.10 sec)
+
+mysql> INSERT INTO PROGRAMMER VALUES(789,'RNC','AGARWAL','PRAVEEN',8/3/98,'VB',11,'SECRET');
+Query OK, 1 row affected (0.10 sec)
+
+mysql> INSERT INTO PROGRAMMER VALUES(134,'TIPPS','CHAUDHARY','SUPRIYO',7/15/95,'C++',52,'SECRET');
+Query OK, 1 row affected (0.08 sec)
+
+mysql> INSERT INTO PROGRAMMER VALUES(896,'KCW','JHA','RANJIT',6/15/97,'JAVA',10,'TOPSECRET');
+Query OK, 1 row affected (0.06 sec)
+
+mysql> INSERT INTO PROGRAMMER VALUES(345,'TIPPS','JOHN','PETER',11/15/99,'JAVA',52,'');
+Query OK, 1 row affected (0.11 sec)
+
+mysql> INSERT INTO PROGRAMMER VALUES(563,'NITTS','ANDERSON','ANDY',08/15/94,'C++',89,'CONFIDENTIAL');
+Query OK, 1 row affected (0.05 sec)
+
+mysql> SELECT * FROM PROGRAMMER;
++-------+--------+-----------+-----------+------------+----------+--------+--------------+
+| EMPNO | PROJID | LASTNAME  | FIRSTNAME | HIREDATE   | LANGUAGE | TASKNO | PRIVILEGE    |
++-------+--------+-----------+-----------+------------+----------+--------+--------------+
+|   201 | NPR    | GUPTA     | SAURAV    | 0000-00-00 | VB       |     52 | SECRET       |
+|   390 | KCW    | GHOSH     | PINKY     | 0000-00-00 | JAVA     |     11 | TOPSECRET    |
+|   789 | RNC    | AGARWAL   | PRAVEEN   | 0000-00-00 | VB       |     11 | SECRET       |
+|   134 | TIPPS  | CHAUDHARY | SUPRIYO   | 0000-00-00 | C++      |     52 | SECRET       |
+|   896 | KCW    | JHA       | RANJIT    | 0000-00-00 | JAVA     |     10 | TOPSECRET    |
+|   345 | TIPPS  | JOHN      | PETER     | 0000-00-00 | JAVA     |     52 |              |
+|   563 | NITTS  | ANDERSON  | ANDY      | 0000-00-00 | C++      |     89 | CONFIDENTIAL |
++-------+--------+-----------+-----------+------------+----------+--------+--------------+
+7 rows in set (0.00 sec)
+
+STEP-6:
+UPDATE PROGRAMMER SET LANGUAGE = 'C++' WHERE EMPNO = 201
+
+UPDATE PROGRAMMER SET PROJID = 'NITTS' WHERE EMPNO = 201;
+
+STEP-7:
+mysql> DELETE FROM PROGRAMMER WHERE EMPNO = 134;
+Query OK, 1 row affected (0.06 sec)
+
+STEP-8:
+
+mysql> ALTER TABLE PROGRAMMER DROP COLUMN TASKNO;
+Query OK, 0 rows affected (1.50 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM PROGRAMMER;
++-------+--------+----------+-----------+------------+----------+--------------+
+| EMPNO | PROJID | LASTNAME | FIRSTNAME | HIREDATE   | LANGUAGE | PRIVILEGE    |
++-------+--------+----------+-----------+------------+----------+--------------+
+|   201 | NITTS  | GUPTA    | SAURAV    | 0000-00-00 | C++      | SECRET       |
+|   390 | KCW    | GHOSH    | PINKY     | 0000-00-00 | JAVA     | TOPSECRET    |
+|   789 | RNC    | AGARWAL  | PRAVEEN   | 0000-00-00 | VB       | SECRET       |
+|   896 | KCW    | JHA      | RANJIT    | 0000-00-00 | JAVA     | TOPSECRET    |
+|   345 | TIPPS  | JOHN     | PETER     | 0000-00-00 | JAVA     |              |
+|   563 | NITTS  | ANDERSON | ANDY      | 0000-00-00 | C++      | CONFIDENTIAL |
++-------+--------+----------+-----------+------------+----------+--------------+
+6 rows in set (0.00 sec)
+
+STEP-9:
+
+mysql> CREATE TABLE DEPARTMENT(
+    -> DEPTNO INT(5),
+    -> DNAME VARCHAR(45),
+    -> LOC VARCHAR(50) NOT NULL);
+Query OK, 0 rows affected, 1 warning (0.42 sec)
+
+mysql> SELECT * FROM DEPARTMENT;
+Empty set (0.02 sec)
+S
+STEP-10:
+
+STEP-11:
+
+mysql> INSERT INTO DEPARTMENT VALUES(10,'ACCOUNTS','NEWYORK');
+Query OK, 1 row affected (0.06 sec)
+
+mysql> INSERT INTO DEPARTMENT VALUES(20,'MARKETING','CHICAGO');
+Query OK, 1 row affected (0.10 sec)
+
+mysql> INSERT INTO DEPARTMENT VALUES(30,'MARKETING','ATLANTA');
+Query OK, 1 row affected (0.06 sec)
+
+mysql> INSERT INTO DEPARTMENT VALUES(40,'RESEARCH','OHIO');
+Query OK, 1 row affected (0.08 sec)
+
+mysql> SELECT * FROM DEPARTMENT;
++--------+-----------+---------+
+| DEPTNO | DNAME     | LOC     |
++--------+-----------+---------+
+|     10 | ACCOUNTS  | NEWYORK |
+|     20 | MARKETING | CHICAGO |
+|     30 | MARKETING | ATLANTA |
+|     40 | RESEARCH  | OHIO    |
++--------+-----------+---------+
+4 rows in set (0.01 sec)

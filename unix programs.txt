@@ -1,0 +1,175 @@
+rstring
+echo "Enter a String"
+# Taking input from user
+read text
+
+# Counting words
+word=$(echo -n "$text" | wc -w)
+# Counting characters
+char=$(echo -n "$text" | wc -c)
+
+# Counting Number of white spaces (Here,specificly " ")
+# sed "s/ change this to whitespace//g"
+space=$(expr length "$text" - length `echo "$text" | sed "s/ //g"`)
+
+# Counting special characters
+special=$(expr length "${text//[^\~!@#$&*()]/}")
+
+# Output
+echo "Number of Words = $word"
+echo "Number of Characters = $char"
+echo "Number of White Spaces = $space"
+echo "Number of Special symbols = $special"
+
+
+2.fibinocci
+
+echo "How many numbers do you want of Fibonacci series ?"
+
+read total
+
+x=0
+
+y=1
+
+i=2
+
+echo "Fibonacci Series up to $total terms :: "
+
+echo "$x"
+
+echo "$y"
+
+while [ $i -lt $total ]
+
+do
+
+i=`expr $i + 1 `
+
+z=`expr $x + $y `
+
+echo "$z"
+
+x=$y
+
+y=$z
+
+done
+
+
+9.Write a shell script to translate the contents of a file into UPPER CASE, where file name is entered through command line?
+
+
+
+$ var_name="THIS IS a TEST"
+$ echo "$VAR_NAME" | tr '[:upper:]' '[:lower:]'
+$ movie="The Matrix"
+$ echo "$movie" | tr '[:lower:]' '[:upper:]'
+
+revesre string
+
+read -p "Enter a string: " str
+length=${#str}
+i=$((length-1))
+while [ $i -ge 0 ]
+do
+revstr=$revstr${str:$i:1}
+i=$((i-1))
+done
+echo "Reverse of $str is $revstr"
+
+
+Add Two Numbers:
+
+echo -n "Enter 1st number: "
+read first_number
+echo -n "Enter 2nd number: "
+read second_number
+sum=$(($first_number + second_number))
+echo "sum of $first_number and $second_number: "$sum
+
+Even Numbers:
+
+echo "---Even or Odd in shell script---"
+echo -n "Enter a number: "
+read n
+echo -n "RESULT: "
+if [ `expr $n % 2` == 0 ]
+then 
+	echo "$n is even"
+else 
+	echo "$n id Odd"
+fi
+
+Greatest Two Numbers:
+
+echo "---FIND THE GREATETST AMONG THREE NUMBERS---"
+echo "enter 1st number: "
+read first_num
+echo "enter 2nd number: "
+read second_num
+echo "enter 3rd number: "
+read third_num
+if test $first_num -gt $second_num && $first_num -gt $third_num
+then
+	echo $first_num is the greatest number.
+elif test $second_num -gt $third_num
+then
+	echo $second_num is the greatest number.
+else
+	echo $third_num is the greatest number.
+fi
+
+
+Not Equal:
+
+a=10
+b=20
+if[ $a!=$b ]
+	echo "both are not equal" 
+fi
+
+Even or Odd:
+echo " Enter a number "
+read n
+if [ $n % 2 == 0 ]
+then
+	echo " it is even number "
+else
+	echo " it is odd number "
+fi
+
+Absolute
+
+echo "Enter a number"
+read Number
+if [ $Number -lt 0 ]
+then
+	Number=$((Number*-1))
+fi
+echo "$Number"
+
+
+Vote:
+
+echo "Enter Your Age"
+read Age
+if [ "$Age" -ge 18 ]
+then
+	echo "You are eligible for vote"
+else
+	echo "you are not eligible for vote"
+fi
+
+Multiplication:
+
+echo "Enter a Number"
+read n
+i=1
+
+while [ $i -le 10 ]
+do
+          echo " $n x $i = $(( n * i ))"
+          i=$(( i + 1 ))
+done
+

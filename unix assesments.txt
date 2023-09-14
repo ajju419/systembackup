@@ -1,0 +1,32 @@
+1.customer discount
+ 
+echo -n "Enter Total price of all articles : "
+read price
+if [ $price -gt 1000 ]
+then
+echo "5% discount and 1% tax "
+d= $(())
+
+else
+echo "10% discount and 2% tax "
+d=$(( $price * 10 / 100 )) # 10% discount
+fi
+# after discount this amount you need to pay..!!
+pay=$(( $price - $d ))
+echo "You need to pay INR. $pay"
+
+2.salary
+
+echo "Netsalary of a employee"
+basicsal=25000
+ta='expr $basicsal/0.1'
+da='expr $basicsal/0.15'
+hra='expr $basicsal*0.2'
+pf='expr $basicsal*0.1'
+esi='expr $basicsal*0.01'
+tds='expr $basicsal*0.01'
+Grosssal='expr $basicalsal+ $ta+ $da+ $hra'
+echo"Gross salary is $Grosssal"
+Netsal='expr $Grosssal- $pf- $esi- $tds'
+echo"Net salary is $Netsal"
+ 
